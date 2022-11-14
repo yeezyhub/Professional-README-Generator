@@ -7,7 +7,7 @@ const generateMarkdown = require('./generateMarkdown.js') // works with other JS
 const questions = [
       {
         type: "input",
-        name: "githubUsername",
+        name: "username",
         message: "What is your GitHub username?",
         validate: usernameInput => {
           if (usernameInput) {
@@ -21,7 +21,7 @@ const questions = [
 
       {
         type: "input",
-        name: "emailInfo",
+        name: "email",
         message: "What is your email address?",
         validate: emailInput => {
           if (emailInput) {
@@ -63,35 +63,28 @@ const questions = [
         name: 'license',
         message: 'Which license is used for this project:',
         choices: ['MIT', 'Apache 2.0', 'GNU GPL v3', 'BSD 3-Clause', 'None'],
-        validate: choicesLength => {
-          if (choicesLength.length <= 1) {
-            return true;
-          } else {
-            return "Please select one license.";
-          }
-        }
       },
       {
         type: "input",
-        name: "installInfo",
+        name: "install",
         message: "What command should be run to install dependencies?",
         suggestions: ['npm i', 'None']
       },
       {
         type: "input",
-        name: "testsInfo",
+        name: "test",
         message: "What command should be run to run tests?",
         suggestions: ['npm test', 'None']
       },
       {
         type: "input",
-        name: "usageInfo",
+        name: "usage",
         message: "What does user need to know about using the repo?",
         suggestions: ['None']
       },
       {
         type: "input",
-        name: "contributionsInfo",
+        name: "contributing",
         message: "What does the user need to know about contributing to the repo?",
         suggestions: ['None']
       }
@@ -99,12 +92,20 @@ const questions = [
 
 // TODO: Create a function to write README file
 function writeToFile(fileName, data) {
-  
-}
+  fs.writeFile("./generated/README.md", generateMarkdown(data), function(err) {
+    if (err) {
+      return console.log(err);
+    }
+    console.log('README.md is successfully generated!');
+  });}
 
 // TODO: Create a function to initialize app
 function init() {
-
+  inquirer.prompt(questions)
+  .then(function (userInput) {
+      console.log(userInput)
+      writeToFile("README.md", generateMarkdown(userInput));
+  });
 }
 
 // Function call to initialize app

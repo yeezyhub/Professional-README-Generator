@@ -3,8 +3,8 @@
 
 function renderLicenseBadge(license) {
 
-  if (license.value === '') {
-    return "";
+  if (license === '') {
+    return '';
   } else if (license == "MIT") {
     return `[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)`;
   } else if (license == "Apache 2.0") {
@@ -22,8 +22,8 @@ function renderLicenseBadge(license) {
 // If there is no license, return an empty string
 function renderLicenseLink(license) {
 
-  if (license.value === '') {
-    return "";
+  if (license === '') {
+    return '';
   } else if (license == "MIT") {
     return `https://opensource.org/licenses/MIT`;
   } else if (license == "Apache 2.0") {
@@ -41,8 +41,8 @@ function renderLicenseLink(license) {
 // If there is no license, return an empty string
 function renderLicenseSection(license) {
 
-  if (license.value === '') {
-    return "";
+  if (license === '') {
+    return '';
   } else {
     return `## License
   ${renderLicenseBadge(license)}
@@ -54,28 +54,44 @@ function renderLicenseSection(license) {
 function generateMarkdown(data) {
 
   return `# ${data.title}
+
   ${renderLicenseBadge(data.license)}
+
   ## Description
+
   ${data.description}
+
   ## Table of Contents
+
   * [Installation](#installation)
   * [Usage](#usage)
   * [License](#license)
   * [Contributing](#contributing)
   * [Tests](#tests)
   * [Questions](#questions)
+
   ## Installation
-  ${data.installInfo}
+
+  ${data.install}
+
   ## Usage
-  ${data.usageInfo}
+
+  ${data.usage}
+
   ${renderLicenseSection(data.license)}
+
   ## Contributing
-  ${data.contributionsInfo}
+
+  ${data.contributing}
+
   ## Tests
-  ${data.testsInfo}
+
+  ${data.test}
+
   ## Questions
-  My GitHub: [${data.githubUsername}](https://github.com/${data.githubUsername}) <br>
-  Email: ${data.emailInfo}
+
+  My GitHub: [${data.username}](https://github.com/${data.username}) <br>
+  Email: ${data.email}
 `;
 
 }
