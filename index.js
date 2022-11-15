@@ -68,25 +68,21 @@ const questions = [
         type: "input",
         name: "install",
         message: "What command should be run to install dependencies?",
-        suggestions: ['npm i', 'None']
       },
       {
         type: "input",
         name: "test",
         message: "What command should be run to run tests?",
-        suggestions: ['npm test', 'None']
       },
       {
         type: "input",
         name: "usage",
         message: "What does user need to know about using the repo?",
-        suggestions: ['None']
       },
       {
         type: "input",
         name: "contributing",
         message: "What does the user need to know about contributing to the repo?",
-        suggestions: ['None']
       }
 ];
 

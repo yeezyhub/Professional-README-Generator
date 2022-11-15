@@ -41,13 +41,10 @@ function renderLicenseLink(license) {
 // If there is no license, return an empty string
 function renderLicenseSection(license) {
 
-  if (license === '') {
-    return '';
+  if (license === 'None') {
+    return ``;
   } else {
-    return `## License
-  ${renderLicenseBadge(license)}
-  ${renderLicenseLink(license)} 
-    `;
+    return `[${license} license](${renderLicenseLink(license)})`
 }}
 
 // TODO: Create a function to generate markdown for README
@@ -77,6 +74,8 @@ function generateMarkdown(data) {
 
   ${data.usage}
 
+  ## License
+
   ${renderLicenseSection(data.license)}
 
   ## Contributing
@@ -89,7 +88,7 @@ function generateMarkdown(data) {
 
   ## Questions
 
-  My GitHub: [${data.username}](https://github.com/${data.username}) <br>
+  GitHub: [${data.username}](https://github.com/${data.username}) <br>
   Email: ${data.email}
 `;
 
