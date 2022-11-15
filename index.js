@@ -1,7 +1,7 @@
 // TODO: Include packages needed for this application
 const inquirer = require('inquirer'); // third-party inquirer package
 const fs = require('fs'); // reads/writes the files from/to the computer
-const generateMarkdown = require('./generateMarkdown.js') // works with other JS files
+const generateMarkdown = require('./generateMarkdown.js') // helps it to work with other JS files
 
 // TODO: Create an array of questions for user input
 const questions = [
@@ -9,6 +9,7 @@ const questions = [
         type: "input",
         name: "username",
         message: "What is your GitHub username?",
+        //validate checks if the user left the console blank or not
         validate: usernameInput => {
           if (usernameInput) {
             return true;
@@ -23,6 +24,7 @@ const questions = [
         type: "input",
         name: "email",
         message: "What is your email address?",
+        //validate checks if the user left the console blank or not
         validate: emailInput => {
           if (emailInput) {
             return true;
@@ -36,6 +38,7 @@ const questions = [
       type: "input",
         name: "title",
         message: "What is your project's name?",
+        //validate checks if the user left the console blank or not
         validate: titleInput => {
           if (titleInput) {
             return true;
@@ -49,6 +52,7 @@ const questions = [
         type: "input",
         name: "description",
         message: "Briefly give an explanation of your project/application.",
+        //validate checks if the user left the console blank or not
         validate: descriptionInput => {
           if (descriptionInput) {
             return true;
@@ -62,7 +66,7 @@ const questions = [
         type: 'list',
         name: 'license',
         message: 'Which license is used for this project:',
-        choices: ['MIT', 'Apache 2.0', 'GNU GPL v3', 'BSD 3-Clause', 'None'],
+        choices: ['MIT', 'Apache 2.0', 'GNU GPL v3', 'BSD 3-Clause', 'None'], //prompts user to select between options
       },
       {
         type: "input",
@@ -88,7 +92,7 @@ const questions = [
 
 // TODO: Create a function to write README file
 function writeToFile(fileName, data) {
-    fs.writeFile("./generated/README.md", generateMarkdown(data), function(err) {
+    fs.writeFile("./README.md", generateMarkdown(data), function(err) {
     if (err) {
       return console.log(err);
     }

@@ -94,4 +94,5 @@ function generateMarkdown(data) {
 
 }
 
+//exports the generateMarkdown to be required by other .js files
 module.exports = generateMarkdown;
