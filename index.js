@@ -1,9 +1,9 @@
-// TODO: Include packages needed for this application
+// Includes packages needed for this application
 const inquirer = require('inquirer'); // third-party inquirer package
 const fs = require('fs'); // reads/writes the files from/to the computer
 const generateMarkdown = require('./generateMarkdown.js') // helps it to work with other JS files
 
-// TODO: Create an array of questions for user input
+// Creates an array of questions for user input
 const questions = [
       {
         type: "input",
@@ -90,7 +90,7 @@ const questions = [
       }
 ];
 
-// TODO: Create a function to write README file
+// Creates a function to write README file
 function writeToFile(fileName, data) {
     fs.writeFile("./README.md", generateMarkdown(data), function(err) {
     if (err) {
@@ -99,7 +99,7 @@ function writeToFile(fileName, data) {
     console.log('README.md is successfully generated!');
   });}
 
-// TODO: Create a function to initialize app
+// Creates a function to initialize app
 function init() {
   inquirer.prompt(questions)
   .then(function (userData) {
